@@ -1,0 +1,14 @@
+{
+	"gridEditors": [
+		{
+			"name": "Latest News And Events",
+			"alias": "latestNewsEventsBlock",
+			"view": "/App_Plugins/LatestNewsEventsBlock/LatestNewsEventsBlockView.html",
+			"render": "/App_Plugins/LatestNewsEventsBlock/Views/LatestNewsEventsBlockRender.cshtml",
+			"icon": "icon-columns"
+		}
+	],
+	"javascript": [
+		"/App_Plugins/LatestNewsEventsBlock/LatestNewsEventsBlock.Controller.js"
+	]
+}

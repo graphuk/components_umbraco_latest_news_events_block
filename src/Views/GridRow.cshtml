@@ -1,0 +1,10 @@
+@using Skybrud.Umbraco.GridData
+@using Skybrud.Umbraco.GridData.Extensions
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<GridRow>
+@foreach (var area in Model.Areas)
+{
+	foreach (var control in area.Controls)
+	{
+		@Html.RenderGridControl(control, control.Editor.Render)
+	}
+}
