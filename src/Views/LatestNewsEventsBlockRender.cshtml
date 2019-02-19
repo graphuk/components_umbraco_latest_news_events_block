@@ -1,3 +1,28 @@
 @using Skybrud.Umbraco.GridData.Rendering
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<GridControlWrapper<Graph.Components.LatestNewsEventsBlock.GridControlLatestNewsEventsBlockValue>>
-<div>@Model.Value.GridControlLatestNewsEventsBlockItem.Title</div>
+<div class="news-events-tiles">
+	<h2>@Model.Value.GridControlLatestNewsEventsBlockItem.Title</h2>
+	<div class="news-events-tiles__list">
+		@foreach (var tile in Model.Value.GridControlLatestNewsEventsBlockItem.Tiles)
+		{
+			<div class="news-events-tiles__item">
+				<div class="media">
+					<img class="image" src="@tile.Image">
+				</div>
+				<div class="content">
+					<div class="eyebrow">@tile.Eyebrow</div>
+					<div class="location">@tile.Location</div>
+					<div class="title">
+						<a class="link" href="@tile.Link">@tile.Title</a>
+					</div>
+					<div class="start-date">@tile.Date.ToString("dd MMM yyyy")</div>
+					@if (tile.EndDate.HasValue)
+					{
+						<div class="end-date">@tile.EndDate.Value.ToString("dd MMM yyyy")</div>
+					}
+					<div class="description">@tile.Description</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
