@@ -11,20 +11,20 @@
 				<div class="latest-tile-section__item">
 					<div class="latest-tile">
 						<div class="latest-tile__media">
-							@if (tile.Image != null) 
+							@if (!string.IsNullOrEmpty(tile.Image))
 							{
-								<img class="latest-tile__img" src="@tile.Image">
+							<img class="latest-tile__img" src="@tile.Image">
 							}
 						</div>
 						<div class="latest-tile__content">
-							@if (!string.IsNullOrEmpty(@tile.Eyebrow))
+							@if (!string.IsNullOrEmpty(tile.Eyebrow))
 							{
 								<div class="latest-tile__eyebrow">@tile.Eyebrow</div>
 							}
 							<h4 class="latest-tile__title">
 								<a class="latest-tile__link" href="@tile.Link">@tile.Title</a>
 							</h4>
-							@if (!string.IsNullOrEmpty(@tile.Description))
+							@if (!string.IsNullOrEmpty(tile.Description))
 							{
 								<div class="latest-tile__summary">@tile.Description</div>
 							}
@@ -34,7 +34,7 @@
 									<span> - @tile.EndDate.Value.ToString("dd MMM yyyy")</span>
 								}
 							</time>
-							@if (!string.IsNullOrEmpty(@tile.Location))
+							@if (!string.IsNullOrEmpty(tile.Location))
 							{
 								<address class="latest-tile__location">@tile.Location</address>
 							}
