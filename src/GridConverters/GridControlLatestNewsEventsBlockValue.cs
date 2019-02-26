@@ -24,7 +24,7 @@ namespace Graph.Components.LatestNewsEventsBlock
 									eventPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.EndDate) >= DateTime.Today)
 				.OrderBy(eventPage => eventPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.StartDate))
 				.FirstOrDefault();
-			var newsToTakeCount = closestFutureEvent != null ? 2 : 3;
+			var newsToTakeCount = closestFutureEvent != null ? LatestNewsEventsBlockConfig.MaxCountNews - 1 : LatestNewsEventsBlockConfig.MaxCountNews;
 			var newsAndEvents = homePage.Descendants(LatestNewsEventsBlockConfig.NewsConfig.PageAlias)
 				.ToArray()
 				.OrderByDescending(newsPage => newsPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.NewsConfig.Date))
@@ -61,7 +61,11 @@ namespace Graph.Components.LatestNewsEventsBlock
 				Title = newsPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.NewsConfig.Title),
 				Description = newsPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.NewsConfig.Description),
 				Date = newsPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.NewsConfig.Date),
-				Eyebrow = newsPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.NewsConfig.Eyebrow),
+				Eyebrow = LatestNewsEventsBlockConfig.IsShowEyebrow
+					? LatestNewsEventsBlockConfig.IsShowDefaultEyebrow
+						? LatestNewsEventsBlockConfig.NewsConfig.EyebrowDefault
+						: newsPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Eyebrow)
+					: "",
 				Image = newsPage.GetPropertyValue<IPublishedContent>(LatestNewsEventsBlockConfig.NewsConfig.Image)?.Url,
 				Link = newsPage.Url
 			};
@@ -72,7 +76,12 @@ namespace Graph.Components.LatestNewsEventsBlock
 			return new LatestNewsEventsTile
 			{
 				Title = evenPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Title),
-				Eyebrow = evenPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Eyebrow),
+				Eyebrow = LatestNewsEventsBlockConfig.IsShowEyebrow
+					? LatestNewsEventsBlockConfig.IsShowDefaultEyebrow
+						? LatestNewsEventsBlockConfig.EventsConfig.EyebrowDefault
+						: evenPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Eyebrow)
+					: "",
+				Image = evenPage.GetPropertyValue<IPublishedContent>(LatestNewsEventsBlockConfig.EventsConfig.Image)?.Url,
 				Location = evenPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Location),
 				Date = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.StartDate),
 				EndDate = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.EndDate)
