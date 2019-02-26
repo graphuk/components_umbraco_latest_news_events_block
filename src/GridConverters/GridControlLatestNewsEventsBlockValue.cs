@@ -60,6 +60,7 @@ namespace Graph.Components.LatestNewsEventsBlock
 			{
 				Title = newsPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.NewsConfig.Title),
 				Description = newsPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.NewsConfig.Description),
+				IsShowDate = LatestNewsEventsBlockConfig.NewsConfig.IsShowDate,
 				Date = newsPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.NewsConfig.Date),
 				Eyebrow = LatestNewsEventsBlockConfig.IsShowEyebrow
 					? LatestNewsEventsBlockConfig.IsShowDefaultEyebrow
@@ -83,6 +84,7 @@ namespace Graph.Components.LatestNewsEventsBlock
 					: "",
 				Image = evenPage.GetPropertyValue<IPublishedContent>(LatestNewsEventsBlockConfig.EventsConfig.Image)?.Url,
 				Location = evenPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Location),
+				IsShowDate = LatestNewsEventsBlockConfig.EventsConfig.IsShowDate,
 				Date = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.StartDate),
 				EndDate = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.EndDate)
 			};

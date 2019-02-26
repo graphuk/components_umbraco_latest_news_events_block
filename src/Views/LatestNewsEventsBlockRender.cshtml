@@ -28,12 +28,15 @@
 							{
 								<div class="latest-tile__summary">@tile.Description</div>
 							}
-							<time class="latest-tile__date">@tile.Date.ToString("dd MMM yyyy")
+							@if (tile.IsShowDate)
+							{
+								<time class="latest-tile__date">@tile.Date.ToString("dd MMM yyyy")
 								@if (tile.EndDate.HasValue)
 								{
 									<span> - @tile.EndDate.Value.ToString("dd MMM yyyy")</span>
 								}
-							</time>
+								</time>
+							}
 							@if (!string.IsNullOrEmpty(tile.Location))
 							{
 								<address class="latest-tile__location">@tile.Location</address>

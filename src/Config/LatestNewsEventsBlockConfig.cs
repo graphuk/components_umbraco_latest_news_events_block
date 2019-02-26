@@ -12,6 +12,7 @@ namespace Graph.Components.LatestNewsEventsBlock
 			public const string PageAlias = "NewsPage";
 			public const string Title = "title";
 			public const string Description = "summary";
+			public const bool IsShowDate = true;
 			public const string Date = "date";
 			public const string Image = "image";
 			public const string Eyebrow = "eyebrow";
@@ -23,6 +24,7 @@ namespace Graph.Components.LatestNewsEventsBlock
 			public const string PageAlias = "EventPage";
 			public const string Title = "title";
 			public const string StartDate = "startDate";
+			public const bool IsShowDate = true;
 			public const string EndDate = "endDate";
 			public const string Eyebrow = "eyebrow";
 			public const string Image = "image";

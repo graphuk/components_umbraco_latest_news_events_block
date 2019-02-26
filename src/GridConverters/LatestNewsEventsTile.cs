@@ -10,6 +10,7 @@ namespace Graph.Components.LatestNewsEventsBlock
 		public string Link { get; set; }
 		public string Eyebrow { get; set; }
 		public string Location { get; set; }
+		public bool IsShowDate { get; set; }
 		public DateTime Date { get; set; }
 		public DateTime? EndDate { get; set; }
 
