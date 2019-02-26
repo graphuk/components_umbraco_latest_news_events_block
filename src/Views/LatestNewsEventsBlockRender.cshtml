@@ -1,28 +1,47 @@
 @using Skybrud.Umbraco.GridData.Rendering
+@using System;
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<GridControlWrapper<Graph.Components.LatestNewsEventsBlock.GridControlLatestNewsEventsBlockValue>>
-<div class="news-events-tiles">
-	<h2>@Model.Value.GridControlLatestNewsEventsBlockItem.Title</h2>
-	<div class="news-events-tiles__list">
-		@foreach (var tile in Model.Value.GridControlLatestNewsEventsBlockItem.Tiles)
-		{
-			<div class="news-events-tiles__item">
-				<div class="media">
-					<img class="image" src="@tile.Image">
-				</div>
-				<div class="content">
-					<div class="eyebrow">@tile.Eyebrow</div>
-					<div class="location">@tile.Location</div>
-					<div class="title">
-						<a class="link" href="@tile.Link">@tile.Title</a>
+
+<div class="latest-tile-section">
+	<div class="latest-tile-section__container">
+		<h2 class="latest-tile-section__title">@Model.Value.GridControlLatestNewsEventsBlockItem.Title</h2>
+			<div class="latest-tile-section__list">
+			@foreach (var tile in Model.Value.GridControlLatestNewsEventsBlockItem.Tiles)
+			{
+				<div class="latest-tile-section__item">
+					<div class="latest-tile">
+						<div class="latest-tile__media">
+							@if (tile.Image != null) 
+							{
+								<img class="latest-tile__img" src="@tile.Image">
+							}
+						</div>
+						<div class="latest-tile__content">
+							@if (!string.IsNullOrEmpty(@tile.Eyebrow))
+							{
+								<div class="latest-tile__eyebrow">@tile.Eyebrow</div>
+							}
+							<h4 class="latest-tile__title">
+								<a class="latest-tile__link" href="@tile.Link">@tile.Title</a>
+							</h4>
+							@if (!string.IsNullOrEmpty(@tile.Description))
+							{
+								<div class="latest-tile__summary">@tile.Description</div>
+							}
+							<time class="latest-tile__date">@tile.Date.ToString("dd MMM yyyy")
+								@if (tile.EndDate.HasValue)
+								{
+									<span> - @tile.EndDate.Value.ToString("dd MMM yyyy")</span>
+								}
+							</time>
+							@if (!string.IsNullOrEmpty(@tile.Location))
+							{
+								<address class="latest-tile__location">@tile.Location</address>
+							}
+						</div>
 					</div>
-					<div class="start-date">@tile.Date.ToString("dd MMM yyyy")</div>
-					@if (tile.EndDate.HasValue)
-					{
-						<div class="end-date">@tile.EndDate.Value.ToString("dd MMM yyyy")</div>
-					}
-					<div class="description">@tile.Description</div>
 				</div>
-			</div>
-		}
+			}
+		</div>
 	</div>
 </div>
