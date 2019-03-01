@@ -86,7 +86,8 @@ namespace Graph.Components.LatestNewsEventsBlock
 				Location = evenPage.GetPropertyValue<string>(LatestNewsEventsBlockConfig.EventsConfig.Location),
 				IsShowDate = LatestNewsEventsBlockConfig.EventsConfig.IsShowDate,
 				Date = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.StartDate),
-				EndDate = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.EndDate)
+				EndDate = evenPage.GetPropertyValue<DateTime>(LatestNewsEventsBlockConfig.EventsConfig.EndDate),
+				Link = evenPage.Url
 			};
 		}
 	}
